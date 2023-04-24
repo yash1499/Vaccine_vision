@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Django Highcharts Example</title>
+</head>
+<body>
+  <div> </div>
+  <div id="container" data-url="{% url 'vaccine_year_wise' %}"></div>
+   
+    <img src="{% static 'accounts/img/Confirm_cases.png' %}" alt="Confirmed cases">
+
+    <img src="{% static 'accounts/img/pie.png' %}" alt="Countrywise % of Fully vaccinated and Booster shot">
+  
+    <img src="{% static 'accounts/img/Cumulative_Deaths.png' %}" alt="Cumulatoive Deaths">
+    
+</body>
+</html>

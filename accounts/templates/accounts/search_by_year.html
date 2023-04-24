@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+    {% block head %}
+        
+    {% endblock %}
+
+
+   {% block body %}
+  <form action='/accounts/search_by_year1/' method="GET">
+        {% csrf_token %}
+        <center>
+                <br><br><br><br>
+                Search by Year:<input type="integer" name="q" placeholder="id">
+                <button type="submit" value="Search">submit</button>
+        </center>        
+      </form>
+    
+    </br>
+    </br>
+    <table style="width:100%" border="3px solid black" padding="15px" cellspacing="2px">
+    	<tr>
+    		<th>Child ID</th>
+    		<th>Child Name</th>
+    		<th>Doctor Hospital ID</th>
+    		<th>Doctor Personal ID</th>
+    		<th>Doctor Name</th>
+    		<th>Vaccination ID</th>
+    		<th>Vaccination name</th>
+    		<th>Date of Vaccination</th>
+    	</tr>
+    	
+    		{%for Patients in Patient_name%}
+        <tr>
+        	<td>{{Patients.Patient_id}}</td>
+        	<td>{{Patients.Patient_name}}</td>
+        	<td>{{Patients.Doctor_hospital_id}}</td>
+        	<td>{{Patients.Doctor_personal_id}}</td>
+        	<td>{{Patients.Doctor_name}}</td>
+        	<td>{{Patients.Vaccine_id}}</td>
+        	<td>{{Patients.Vaccination_name}}</td>
+			<td>{{Patients.Date_of_vaccination}}</td>
+			       
+        </tr>      
+    {% endfor %}
+    {% endblock %}
+    	
+    		
+ 
+    </table>
+    

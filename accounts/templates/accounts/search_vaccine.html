@@ -1,0 +1,48 @@
+{% load static %}
+<link href="{% static 'accounts/css/bootstrap.min.css' %}" rel="stylesheet">
+<form action="{% url 'vaccine_search'}" type="get" id="searchform">
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+      <select id="search-by" name="s" type="text" value="{{ request.GET.s }}" class="form-control form-control-lg">
+                <option></option>
+                <option>Search By Year</option>
+
+      </select>
+    </div>
+    <div class="col-sm-3 my-1">
+      <label class="sr-only" for="searchbox">Username</label>
+      <div class="input-group">
+        <!--<input id="search-text" type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Search text">-->
+        <input class="searchfield" id="searchbox" name="q" type="text" value="{{ request.GET.q }}"
+               placeholder="Search..."/>
+
+      </div>
+    </div>
+    <div class="col-sm-3 my-1">
+      <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<table class="table table-bordered" id="tablePreview">
+<!--Table head-->
+  <thead>
+    <tr>
+      <th>Vaccine name</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Date of vaccination</th>
+    </tr>
+  </thead>
+    {% if vaccines %}
+        {% for q in vaccines %}
+         <tr>
+            <td>{{ q.name }}</td>
+            <td>{{ q.patient.email }}</td>
+            <td>{{ q.doctor.email }}</td>
+            <td>{{ q.date_of_vaccination }}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <p>No vaccines are available.</p>
+    {% endif %}
+</table>
